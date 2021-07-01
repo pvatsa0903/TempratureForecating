@@ -11,7 +11,7 @@ str(TempData)
 
 
 #creating the time series
-tempratureTS <- ts(TempData$Temperature, start=c(1981,1), end=c(1990,12), frequency=12)
+tempratureTS <- ts(TempData$Temperature, start=c(1981,1), end=c(1990,52), frequency=52)
 summary(tempratureTS)
 str(tempratureTS)
 
@@ -22,9 +22,15 @@ tempratureTS
 sum(is.na(tempratureTS))
 frequency(tempratureTS)
 cycle(tempratureTS)
+summary(tempratureTS)
 plot(tempratureTS, xlab="Year", ylab="Temprature")
 autoplot(tempratureTS, xlab ="Years" , ylab ="Temprature" )
-boxplot(tempratureTS~cycle(tempratureTS), xlab="Month", ylab = "Temprature")
+boxplot(tempratureTS~cycle(tempratureTS), xlab="Weeks", ylab = "Temprature")
+axis(2, at=seq(1,12), labels=format(seq(1,12))) 
+?seq
+
+?format
+?boxplot
 
 #time series decomposition
 decomposeTempratureTS <- decompose(tempratureTS, "multiplicative")
@@ -41,8 +47,8 @@ autoplot(acf(tempratureTS,plot=FALSE))
 decomposeTempratureTS$random
 
 #splitting the dataSet
-trainDataset.ts <- window (tempratureTS, start=c(1981,1), end=c(1988,12))
-validationDataset.ts <-window (tempratureTS, start=c(1989,1), end=c(1990,12))
+trainDataset.ts <- window (tempratureTS, start=c(1981,1), end=c(1989,12))
+validationDataset.ts <-window (tempratureTS, start=c(1990,1), end=c(1990,12))
 trainDataset.ts
 validationDataset.ts
 
