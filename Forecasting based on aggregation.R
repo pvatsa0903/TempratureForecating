@@ -1,5 +1,3 @@
-# /Users/harishgavva/Desktop/BAIM/Summer Mod/Advanced BA/Homework-2/Summer 2021 MGMT 67200-B01 LEC - 622021 - 817 PM/TempData.xlsx
-
 install.packages("tidyverse")
 
 library(readxl)
